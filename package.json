@@ -1,0 +1,57 @@
+{
+  "name": "react-flat-pagination",
+  "version": "0.0.0",
+  "main": "dist/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "tsup --format esm,cjs --dts --legacy-output --watch",
+    "build": "tsup --format esm,cjs --dts --legacy-output",
+    "release": "yarn build && yarn publish --access=public",
+    "lint": "TIMING=1 eslint src/**/*.ts* --fix",
+    "test": "vitest"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "tsup": "^6.4.0",
+    "typescript": "^4.8.4"
+  },
+  "tsup": {
+    "entry": [
+      "src/index.ts"
+    ],
+    "splitting": false,
+    "sourcemap": true,
+    "clean": true
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cbcruk/react-use-pagination.git"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/react-hooks": "^8.0.1",
+    "@testing-library/user-event": "^14.4.3",
+    "@types/node": "^18.11.9",
+    "@types/react": "^18.0.25",
+    "@types/react-dom": "^18.0.8",
+    "@typescript-eslint/eslint-plugin": "^5.42.1",
+    "@typescript-eslint/parser": "^5.42.1",
+    "@vitejs/plugin-react": "^2.2.0",
+    "@vitest/ui": "^0.24.5",
+    "eslint": "^8.27.0",
+    "eslint-plugin-react": "^7.31.10",
+    "jsdom": "^20.0.2",
+    "react-test-renderer": "^18.2.0",
+    "vite": "^3.2.3",
+    "vitest": "^0.24.5"
+  },
+  "stackblitz": {
+    "startCommand": "npm run test"
+  }
+}

@@ -1,0 +1,61 @@
+// Vitest Snapshot v1
+
+exports[`Pagination 1`] = `
+<div>
+  <div>
+    <div
+      data-testid="current"
+    >
+      1
+    </div>
+    <div>
+      <button
+        data-testid="first"
+      >
+        first
+      </button>
+      <button
+        data-testid="prev"
+      >
+        prev
+      </button>
+      <div>
+        <a
+          data-active="true"
+          data-testid="item-1"
+        >
+          1
+        </a>
+        <a
+          data-active="false"
+          data-testid="item-2"
+        >
+          2
+        </a>
+        <a
+          data-active="false"
+          data-testid="item-3"
+        >
+          3
+        </a>
+        <a
+          data-active="false"
+          data-testid="item-4"
+        >
+          4
+        </a>
+      </div>
+      <button
+        data-testid="next"
+      >
+        next
+      </button>
+      <button
+        data-testid="last"
+      >
+        last
+      </button>
+    </div>
+  </div>
+</div>
+`;
