@@ -1,6 +1,6 @@
 {
-  "name": "react-flat-pagination",
-  "version": "0.0.0",
+  "name": "@cbcruk/react-flat-pagination",
+  "version": "0.0.1",
   "main": "dist/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/index.d.ts",
@@ -30,7 +30,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cbcruk/react-use-pagination.git"
+    "url": "git+https://github.com/cbcruk/react-flat-pagination.git"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.5",
