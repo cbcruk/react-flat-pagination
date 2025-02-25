@@ -5,8 +5,7 @@ import { usePagination } from './usePagination'
 test('usePagination', () => {
   const { result } = renderHook(() =>
     usePagination({
-      totalNumber: 100,
-      pageSize: 30,
+      total: 120,
     })
   )
 
@@ -18,18 +17,20 @@ test('usePagination', () => {
       "goToLast": [Function],
       "handleNext": [Function],
       "handlePrev": [Function],
-      "pagination": [
+      "ranges": [
         1,
         2,
         3,
         4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
       ],
-      "setCurrent": [Function],
     }
   `)
-
-  result.current.setCurrent(2)
-  expect(result.current.current).toEqual(2)
 
   result.current.goTo(3)
   expect(result.current.current).toEqual(3)
@@ -44,5 +45,19 @@ test('usePagination', () => {
   expect(result.current.current).toEqual(1)
 
   result.current.goToLast()
-  expect(result.current.current).toEqual(4)
+  expect(result.current.current).toEqual(12)
+  expect(result.current).toMatchInlineSnapshot(`
+    {
+      "current": 12,
+      "goTo": [Function],
+      "goToFirst": [Function],
+      "goToLast": [Function],
+      "handleNext": [Function],
+      "handlePrev": [Function],
+      "ranges": [
+        11,
+        12,
+      ],
+    }
+  `)
 })

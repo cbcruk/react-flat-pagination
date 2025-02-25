@@ -2,12 +2,16 @@ import { PaginationProps } from './types'
 import { usePagination } from './usePagination'
 
 export function Pagination({
-  totalNumber,
-  pageSize,
-  pageNumber = 1,
+  total,
+  pageCount,
+  defaultCurrent = 1,
   children,
 }: PaginationProps) {
-  const result = usePagination({ totalNumber, pageSize, pageNumber })
+  const result = usePagination({
+    total,
+    pageCount,
+    defaultCurrent,
+  })
 
   return children(result)
 }

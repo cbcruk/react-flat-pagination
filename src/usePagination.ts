@@ -1,29 +1,27 @@
-import { useCallback, useState } from 'react'
-import { chunk, range } from './utils'
+import { useState } from 'react'
 import { Options } from './types'
 
 export function usePagination({
-  totalNumber,
-  pageSize,
-  pageRange = 10,
-  pageNumber = 1,
+  defaultCurrent = 1,
+  total,
+  pageCount = 10,
 }: Options) {
-  const [current, setCurrent] = useState(pageNumber)
-  const list = range(Math.ceil(totalNumber / pageSize))
-  const chunkCount = totalNumber / pageRange
-  const chunked = chunk({ list, count: chunkCount })
-  const position = Math.ceil(current / pageRange) - 1
-  const pagination = chunked[position]
-  const handlePrev = useCallback(() => setCurrent((p) => p - 1), [])
-  const handleNext = useCallback(() => setCurrent((p) => p + 1), [])
-  const goTo = useCallback((index: number) => setCurrent(index), [])
-  const goToFirst = useCallback(() => setCurrent(1), [])
-  const goToLast = useCallback(() => setCurrent(list.length), [])
+  const [current, setCurrent] = useState(defaultCurrent)
+
+  const totalPages = Math.ceil(total / pageCount)
+  const start = Math.floor((current - 1) / pageCount) * pageCount + 1
+  const end = Math.min(start + pageCount - 1, totalPages)
+  const ranges = Array.from({ length: end - start + 1 }, (_, i) => start + i)
+
+  const handlePrev = () => setCurrent((p) => p - 1)
+  const handleNext = () => setCurrent((p) => p + 1)
+  const goTo = (index: number) => setCurrent(index)
+  const goToFirst = () => setCurrent(1)
+  const goToLast = () => setCurrent(totalPages)
 
   return {
-    pagination,
     current,
-    setCurrent,
+    ranges,
     handlePrev,
     handleNext,
     goTo,

@@ -44,6 +44,42 @@ exports[`Pagination 1`] = `
         >
           4
         </a>
+        <a
+          data-active="false"
+          data-testid="item-5"
+        >
+          5
+        </a>
+        <a
+          data-active="false"
+          data-testid="item-6"
+        >
+          6
+        </a>
+        <a
+          data-active="false"
+          data-testid="item-7"
+        >
+          7
+        </a>
+        <a
+          data-active="false"
+          data-testid="item-8"
+        >
+          8
+        </a>
+        <a
+          data-active="false"
+          data-testid="item-9"
+        >
+          9
+        </a>
+        <a
+          data-active="false"
+          data-testid="item-10"
+        >
+          10
+        </a>
       </div>
       <button
         data-testid="next"

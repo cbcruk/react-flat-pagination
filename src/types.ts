@@ -1,10 +1,9 @@
 import { usePagination } from './usePagination'
 
 export type Options = {
-  totalNumber: number
-  pageSize: number
-  pageRange?: number
-  pageNumber?: number
+  total: number
+  pageCount?: number
+  defaultCurrent?: number
 }
 
 export type PaginationProps = {

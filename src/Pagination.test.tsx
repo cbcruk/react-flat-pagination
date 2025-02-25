@@ -5,10 +5,10 @@ import { Pagination } from './Pagination'
 
 test('Pagination', async () => {
   const { container } = render(
-    <Pagination totalNumber={100} pageSize={30}>
+    <Pagination total={100} pageCount={10} defaultCurrent={1}>
       {({
         current,
-        pagination,
+        ranges,
         handleNext,
         handlePrev,
         goTo,
@@ -31,7 +31,7 @@ test('Pagination', async () => {
                 prev
               </button>
               <div>
-                {pagination.map((page) => {
+                {ranges.map((page) => {
                   return (
                     <a
                       key={page}
@@ -70,7 +70,7 @@ test('Pagination', async () => {
   expect(screen.getByTestId('current')).toHaveTextContent('2')
 
   await userEvent.click(screen.getByTestId('last'))
-  expect(screen.getByTestId('current')).toHaveTextContent('4')
+  expect(screen.getByTestId('current')).toHaveTextContent('10')
 
   await userEvent.click(screen.getByTestId('first'))
   expect(screen.getByTestId('current')).toHaveTextContent('1')
