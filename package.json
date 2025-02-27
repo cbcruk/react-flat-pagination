@@ -12,7 +12,9 @@
     "build": "tsup --format esm,cjs --dts --legacy-output",
     "release": "yarn build && yarn publish --access=public",
     "lint": "TIMING=1 eslint src/**/*.ts* --fix",
-    "test": "vitest"
+    "test": "vitest",
+    "ladle": "ladle serve --port 4123",
+    "ladle:build": "ladle build"
   },
   "dependencies": {
     "react": "^18.2.0",
@@ -33,6 +35,7 @@
     "url": "git+https://github.com/cbcruk/react-flat-pagination.git"
   },
   "devDependencies": {
+    "@ladle/react": "^5.0.1",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/react-hooks": "^8.0.1",
