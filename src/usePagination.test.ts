@@ -17,6 +17,8 @@ test('usePagination', () => {
       "goToLast": [Function],
       "handleNext": [Function],
       "handlePrev": [Function],
+      "isFirst": true,
+      "isLast": false,
       "ranges": [
         1,
         2,
@@ -54,6 +56,8 @@ test('usePagination', () => {
       "goToLast": [Function],
       "handleNext": [Function],
       "handlePrev": [Function],
+      "isFirst": false,
+      "isLast": true,
       "ranges": [
         11,
         12,

@@ -13,6 +13,9 @@ export function usePagination({
   const end = Math.min(start + pageCount - 1, totalPages)
   const ranges = Array.from({ length: end - start + 1 }, (_, i) => start + i)
 
+  const isFirst = current === 1
+  const isLast = current === totalPages
+
   const handlePrev = () => setCurrent((p) => p - 1)
   const handleNext = () => setCurrent((p) => p + 1)
   const goTo = (index: number) => setCurrent(index)
@@ -22,6 +25,8 @@ export function usePagination({
   return {
     current,
     ranges,
+    isFirst,
+    isLast,
     handlePrev,
     handleNext,
     goTo,
