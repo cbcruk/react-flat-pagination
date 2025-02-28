@@ -1,8 +1,11 @@
 import type { Story } from '@ladle/react'
 import { Pagination } from './Pagination'
+import { ComponentProps } from 'react'
 
-export const PaginationStory: Story = () => (
-  <Pagination total={100} pageCount={10} defaultCurrent={1}>
+type PaginationStoryProps = ComponentProps<typeof Pagination>
+
+export const PaginationStory: Story<PaginationStoryProps> = (props) => (
+  <Pagination {...props}>
     {({
       current,
       ranges,
@@ -59,3 +62,9 @@ export const PaginationStory: Story = () => (
     }}
   </Pagination>
 )
+
+PaginationStory.args = {
+  total: 100,
+  pageCount: 10,
+  defaultCurrent: 1,
+};
