@@ -10,7 +10,7 @@
   "scripts": {
     "dev": "tsup --format esm,cjs --dts --legacy-output --watch",
     "build": "tsup --format esm,cjs --dts --legacy-output",
-    "release": "yarn build && yarn publish --access=public",
+    "release": "pnpm build && pnpm publish --access=public",
     "lint": "TIMING=1 eslint src/**/*.ts* --fix",
     "test": "vitest",
     "ladle": "ladle serve --port 4123",

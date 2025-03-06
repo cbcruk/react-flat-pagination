@@ -1,42 +1,36 @@
 # react-flat-pagination
 
-말줄임표(`...`) 없는 React 페이지네이션 컴포넌트입니다.
-
 ## 소개
 
-`react-flat-pagination`은 React 애플리케이션에서 사용할 수 있는 간단하고 직관적인 페이지네이션 컴포넌트입니다. 이 라이브러리는 다음과 같은 특징을 가지고 있습니다.
+말줄임표(`...`) 없는 React 페이지네이션 컴포넌트입니다.
 
-- 말줄임표(`...`)를 사용하지 않는 깔끔한 디자인
-- 컴포넌트 기반 및 훅 기반 사용 방식 모두 지원
-- TypeScript로 작성되어 타입 안정성 제공
-- 다양한 페이지 이동 기능 (다음, 이전, 처음, 마지막, 특정 페이지로 이동)
-- 사용자 정의 UI 지원
+이 프로젝트는 리액트 애플리케이션을 위한 유연하고 사용하기 쉬운 페이지네이션 컴포넌트를 제공합니다. `Pagination` 컴포넌트와 페이지네이션 로직을 관리하기 위한 `usePagination` 훅을 포함하고 있습니다.
 
-## 설치 방법
-
-[npm](https://npmjs.org/) 또는 [yarn](https://yarnpkg.com)을 사용하여 설치할 수 있습니다.
+## 설치
 
 ```bash
-# npm 사용
-$ npm install --save @cbcruk/react-flat-pagination
-
-# yarn 사용
-$ yarn add @cbcruk/react-flat-pagination
+pnpm install
 ```
 
-## 사용 방법
+## 사용법
 
-### 컴포넌트 방식
+### Pagination 컴포넌트
 
-```jsx
-import { Pagination } from '@cbcruk/react-flat-pagination';
+`Pagination` 컴포넌트는 페이지네이션 컨트롤을 렌더링하는 데 사용됩니다. `total`, `pageCount`, `defaultCurrent`를 props로 필요로 합니다.
 
-function MyPagination() {
+예시:
+
+```tsx
+import { Pagination } from '@cbcruk/react-flat-pagination'
+
+function App() {
   return (
     <Pagination total={100} pageCount={10} defaultCurrent={1}>
       {({
         current,
         ranges,
+        isFirst,
+        isLast,
         handleNext,
         handlePrev,
         goTo,
@@ -44,113 +38,65 @@ function MyPagination() {
         goToLast,
       }) => (
         <div>
-          <button onClick={goToFirst} disabled={current === 1}>
+          <div>{current}</div>
+          <button disabled={isFirst} onClick={goToFirst}>
             처음
           </button>
-          <button onClick={handlePrev} disabled={current === 1}>
+          <button disabled={isFirst} onClick={handlePrev}>
             이전
           </button>
-          
-          {ranges.map(page => (
-            <button 
-              key={page} 
-              onClick={() => goTo(page)}
-              style={{ fontWeight: current === page ? 'bold' : 'normal' }}
-            >
+          {ranges.map((page) => (
+            <button key={page} onClick={() => goTo(page)}>
               {page}
             </button>
           ))}
-          
-          <button onClick={handleNext} disabled={current === Math.ceil(100/10)}>
+          <button disabled={isLast} onClick={handleNext}>
             다음
           </button>
-          <button onClick={goToLast} disabled={current === Math.ceil(100/10)}>
+          <button disabled={isLast} onClick={goToLast}>
             마지막
           </button>
         </div>
       )}
     </Pagination>
-  );
+  )
 }
 ```
 
-### 훅(Hook) 방식
+### usePagination
 
-```jsx
-import { usePagination } from '@cbcruk/react-flat-pagination';
+`usePagination` 훅은 페이지네이션 로직을 제공하며, `Pagination` 컴포넌트와 독립적으로 사용할 수 있습니다.
 
-function MyPagination() {
-  const {
-    current,
-    ranges,
-    handleNext,
-    handlePrev,
-    goTo,
-    goToFirst,
-    goToLast,
-  } = usePagination({
-    total: 100,
-    pageCount: 10,
-    defaultCurrent: 1,
-  });
+```tsx
+import { usePagination } from '@cbcruk/react-flat-pagination'
 
-  return (
-    <div>
-      <button onClick={goToFirst} disabled={current === 1}>
-        처음
-      </button>
-      <button onClick={handlePrev} disabled={current === 1}>
-        이전
-      </button>
-      
-      {ranges.map(page => (
-        <button 
-          key={page} 
-          onClick={() => goTo(page)}
-          style={{ fontWeight: current === page ? 'bold' : 'normal' }}
-        >
-          {page}
-        </button>
-      ))}
-      
-      <button onClick={handleNext} disabled={current === Math.ceil(100/10)}>
-        다음
-      </button>
-      <button onClick={goToLast} disabled={current === Math.ceil(100/10)}>
-        마지막
-      </button>
-    </div>
-  );
-}
+const {
+  current,
+  ranges,
+  isFirst,
+  isLast,
+  handleNext,
+  handlePrev,
+  goTo,
+  goToFirst,
+  goToLast,
+} = usePagination({
+  total: 100,
+  pageCount: 10,
+  defaultCurrent: 1,
+})
 ```
 
-## API
+## 테스트
 
-### Pagination 컴포넌트 Props
+```sh
+pnpm test
+```
 
-| 속성 | 타입 | 기본값 | 설명 |
-|------|------|--------|------|
-| total | number | - | 총 아이템 수 |
-| pageCount | number | 10 | 페이지당 아이템 수 |
-| defaultCurrent | number | 1 | 초기 페이지 번호 |
-| children | function | - | 렌더 함수 |
+## 미리보기
 
-### usePagination 훅 옵션
+컴포넌트 스토리를 보려면 [Ladle](https://ladle.dev/)과 같은 도구를 사용할 수 있습니다.
 
-| 옵션 | 타입 | 기본값 | 설명 |
-|------|------|--------|------|
-| total | number | - | 총 아이템 수 |
-| pageCount | number | 10 | 페이지당 아이템 수 |
-| defaultCurrent | number | 1 | 초기 페이지 번호 |
-
-### 반환값
-
-| 속성 | 타입 | 설명 |
-|------|------|------|
-| current | number | 현재 페이지 번호 |
-| ranges | number[] | 표시할 페이지 번호 배열 |
-| handlePrev | function | 이전 페이지로 이동하는 함수 |
-| handleNext | function | 다음 페이지로 이동하는 함수 |
-| goTo | function | 특정 페이지로 이동하는 함수 |
-| goToFirst | function | 첫 페이지로 이동하는 함수 |
-| goToLast | function | 마지막 페이지로 이동하는 함수 |
+```sh
+pnpm ladle
+```
