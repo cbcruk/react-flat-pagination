@@ -4,6 +4,7 @@ import userEvent from '@testing-library/user-event'
 import { Pagination } from './Pagination'
 
 test('Pagination', async () => {
+  const user = userEvent.setup()
   const { container } = render(
     <Pagination total={100} pageCount={10} defaultCurrent={1}>
       {({
@@ -60,18 +61,18 @@ test('Pagination', async () => {
   )
   expect(container).toMatchSnapshot()
 
-  await userEvent.click(screen.getByTestId('next'))
+  await user.click(screen.getByTestId('next'))
   expect(screen.getByTestId('current')).toHaveTextContent('2')
 
-  await userEvent.click(screen.getByTestId('first'))
+  await user.click(screen.getByTestId('first'))
   expect(screen.getByTestId('current')).toHaveTextContent('1')
 
-  await userEvent.click(screen.getByTestId('item-2'))
+  await user.click(screen.getByTestId('item-2'))
   expect(screen.getByTestId('current')).toHaveTextContent('2')
 
-  await userEvent.click(screen.getByTestId('last'))
+  await user.click(screen.getByTestId('last'))
   expect(screen.getByTestId('current')).toHaveTextContent('10')
 
-  await userEvent.click(screen.getByTestId('first'))
+  await user.click(screen.getByTestId('first'))
   expect(screen.getByTestId('current')).toHaveTextContent('1')
 })

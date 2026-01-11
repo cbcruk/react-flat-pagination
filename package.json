@@ -1,5 +1,5 @@
 {
-  "name": "@cbcruk/react-flat-pagination",
+  "name": "react-flat-pagination",
   "version": "0.0.2",
   "main": "dist/index.js",
   "module": "dist/esm/index.js",
@@ -36,9 +36,8 @@
   },
   "devDependencies": {
     "@ladle/react": "^5.0.1",
-    "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/react-hooks": "^8.0.1",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.1",
     "@testing-library/user-event": "^14.4.3",
     "@types/node": "^18.11.9",
     "@types/react": "^18.0.25",

@@ -1,5 +1,5 @@
 import { expect, test } from 'vitest'
-import { renderHook } from '@testing-library/react-hooks'
+import { renderHook, act } from '@testing-library/react'
 import { usePagination } from './usePagination'
 
 test('usePagination', () => {
@@ -34,19 +34,29 @@ test('usePagination', () => {
     }
   `)
 
-  result.current.goTo(3)
+  act(() => {
+    result.current.goTo(3)
+  })
   expect(result.current.current).toEqual(3)
 
-  result.current.goToFirst()
+  act(() => {
+    result.current.goToFirst()
+  })
   expect(result.current.current).toEqual(1)
 
-  result.current.handleNext()
+  act(() => {
+    result.current.handleNext()
+  })
   expect(result.current.current).toEqual(2)
 
-  result.current.handlePrev()
+  act(() => {
+    result.current.handlePrev()
+  })
   expect(result.current.current).toEqual(1)
 
-  result.current.goToLast()
+  act(() => {
+    result.current.goToLast()
+  })
   expect(result.current.current).toEqual(12)
   expect(result.current).toMatchInlineSnapshot(`
     {
