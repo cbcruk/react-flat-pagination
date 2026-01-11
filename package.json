@@ -1,6 +1,20 @@
 {
   "name": "react-flat-pagination",
-  "version": "0.0.2",
+  "version": "0.0.3",
+  "description": "말줄임표 없는 React 페이지네이션 컴포넌트",
+  "keywords": [
+    "react",
+    "pagination",
+    "flat",
+    "headless"
+  ],
+  "license": "MIT",
+  "author": "cbcruk",
+  "homepage": "https://cbcruk.github.io/react-flat-pagination/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cbcruk/react-flat-pagination.git"
+  },
   "main": "dist/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/index.d.ts",
@@ -16,23 +30,9 @@
     "ladle": "ladle serve --port 4123",
     "ladle:build": "ladle build"
   },
-  "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "tsup": "^6.4.0",
-    "typescript": "^4.8.4"
-  },
-  "tsup": {
-    "entry": [
-      "src/index.ts"
-    ],
-    "splitting": false,
-    "sourcemap": true,
-    "clean": true
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/cbcruk/react-flat-pagination.git"
+  "peerDependencies": {
+    "react": ">=17.0.0",
+    "react-dom": ">=17.0.0"
   },
   "devDependencies": {
     "@ladle/react": "^5.0.1",
@@ -49,9 +49,21 @@
     "eslint": "^8.27.0",
     "eslint-plugin-react": "^7.31.10",
     "jsdom": "^20.0.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-test-renderer": "^18.2.0",
+    "tsup": "^6.4.0",
+    "typescript": "^4.8.4",
     "vite": "^3.2.3",
     "vitest": "^0.24.5"
+  },
+  "tsup": {
+    "entry": [
+      "src/index.ts"
+    ],
+    "splitting": false,
+    "sourcemap": true,
+    "clean": true
   },
   "stackblitz": {
     "startCommand": "npm run test"
