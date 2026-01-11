@@ -2,6 +2,8 @@
 
 말줄임표(`...`) 없이 단순하게 페이지를 표시하는 React 페이지네이션 라이브러리입니다.
 
+[Demo](https://cbcruk.github.io/react-flat-pagination/)
+
 ## Features
 
 - **Flat UI** - 말줄임표 없이 현재 범위의 페이지만 표시
